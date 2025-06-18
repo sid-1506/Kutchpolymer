@@ -10,14 +10,14 @@
   <link
     href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@300;400;600;700&family=Poppins:wght@300;400;500;600;700&display=swap"
     rel="stylesheet">
-  <link rel="stylesheet" href="/assets/css/style.css">
+  <!-- <link rel="stylesheet" href="/assets/css/style.css"> -->
   <style>
     :root {
       --primary-color: #0079CC;
       --primary-dark: #005c99;
       --text-dark: #333;
-      --text-light: #666 !important;
-      --bg-light: #f5f5f5 !important;
+      --text-light: #666;
+      --bg-light: #f5f5f5;
       --white: #ffffff;
       --shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
     }
@@ -43,11 +43,24 @@
       font-weight: 600;
     }
 
+    /* Container styles - ADDED */
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    @media (max-width: 768px) {
+      .container {
+        padding: 0 15px;
+      }
+    }
+
     /* Hero Section */
     .hero {
       background: linear-gradient(135deg, var(--primary-color), var(--primary-dark));
       padding: 100px 0 50px;
-      color: var(--white) !important;
+      color: var(--white);
       position: relative;
       overflow: hidden;
     }
@@ -73,7 +86,7 @@
     }
 
     .hero .hero-text {
-      color: var(--white) !important;
+      color: var(--white);
     }
 
 
@@ -118,7 +131,7 @@
     }
 
     .story-grid {
-      display: grid !important;
+      display: grid;
       grid-template-columns: 1fr 1fr;
       gap: 50px;
       align-items: center;
@@ -128,8 +141,8 @@
     .section-title {
       font-size: 28px;
       margin-bottom: 40px;
-      position: relative ;
-      display: inline-block ;
+      position: relative;
+      display: inline-block;
     }
 
     .section-title .title-normal {
@@ -447,38 +460,6 @@
 
     .social-icon:hover svg {
       fill: var(--white);
-    }
-
-    /* Back to Home Button Styles */
-    .back-to-home {
-      position: absolute;
-      top: 20px;
-      left: 20px;
-      padding: 8px 16px;
-      background-color: rgba(255, 255, 255, 0.15);
-      color: #fff;
-      border-radius: 30px;
-      font-size: 14px;
-      backdrop-filter: blur(8px);
-      transition: all 0.3s ease;
-      text-decoration: none;
-      display: flex;
-      align-items: center;
-      z-index: 10;
-    }
-
-    .back-to-home:hover {
-      background-color: rgba(255, 255, 255, 0.25);
-      transform: translateX(-5px);
-    }
-
-    .back-icon {
-      margin-right: 8px;
-      transition: transform 0.3s ease;
-    }
-
-    .back-to-home:hover .back-icon {
-      transform: translateX(-3px);
     }
 
     /* Sustainability Section - REDESIGNED */
@@ -854,24 +835,480 @@
         left: 0;
       }
     }
+
+    /* ===============================================
+           HEADER SPECIFIC STYLES - FIXED FOR MOBILE/DESKTOP
+           =============================================== */
+    .site-header *,
+    .site-header *::before,
+    .site-header *::after {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    .site-header {
+      position: relative;
+      z-index: 10;
+      font-family: "Nunito Sans", sans-serif;
+    }
+
+    .site-header li {
+      list-style: none;
+    }
+
+    .site-header a {
+      text-decoration: none;
+    }
+
+    .site-header a,
+    .site-header img,
+    .site-header span,
+    .site-header button,
+    .site-header ion-icon {
+      display: block;
+    }
+
+    .site-header button {
+      border: none;
+      background: none;
+      font: inherit;
+      text-align: left;
+      cursor: pointer;
+    }
+
+    .site-header ion-icon {
+      pointer-events: none;
+    }
+
+    .header-bottom {
+      background: hsl(0, 0%, 100%);
+      padding-block: 15px;
+      /* REDUCED from 25px to 15px */
+    }
+
+    .header-bottom .logo img {
+      width: 65px;
+      /* REDUCED from 80px to 65px */
+      height: auto;
+    }
+
+    .site-header .container {
+      padding-inline: 15px;
+    }
+
+    .site-header button,
+    .site-header a {
+      transition: 0.25s ease;
+    }
+
+    .navbar {
+      background: hsl(0, 0%, 100%);
+      position: fixed;
+      top: 0;
+      left: -310px;
+      max-width: 300px;
+      width: 100%;
+      height: 100%;
+      box-shadow: 0 3px 10px hsla(0, 0%, 0%, 0.3);
+      z-index: 5;
+      padding: 60px 20px 20px;
+      visibility: hidden;
+      transition: 0.15s ease-in;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .navbar.active {
+      visibility: visible;
+      transform: translateX(310px);
+      transition: 0.25s ease-out;
+    }
+
+    .navbar-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-bottom: 35px;
+      border-bottom: 1px solid hsl(0, 0%, 93%);
+      margin-bottom: 25px;
+    }
+
+    .navbar-top .logo img {
+      width: 200px;
+    }
+
+    .nav-close-btn ion-icon {
+      font-size: 20px;
+      --ionicon-stroke-width: 45px;
+      padding: 5px;
+      display: none;
+    }
+
+    .navbar-link {
+      color: hsl(200, 15%, 43%);
+      font-size: 0.875rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      padding-block: 15px;
+    }
+
+    .navbar-link:is(:hover, :focus) {
+      color: #0079CC;
+    }
+
+    .overlay {
+      position: fixed;
+      inset: 0;
+      background: hsla(0, 0%, 0%, 0.7);
+      opacity: 0;
+      pointer-events: none;
+      transition: 0.25s ease;
+      z-index: 4;
+    }
+
+    .overlay.active {
+      opacity: 1;
+      pointer-events: all;
+    }
+
+    /* FIXED MOBILE NAVBAR SOCIAL ICONS - MATCHING REFERENCE EXACTLY */
+    .navbar-social {
+      margin-top: auto;
+      padding-top: 20px;
+      border-top: 1px solid hsl(0, 0%, 93%);
+    }
+
+    .navbar-social-list {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 40px;
+      padding: 0px 0;
+      padding-left: 5px;
+      /* FIX: Prevents first icon cutoff */
+    }
+
+    .navbar-social-link {
+      display: inline-flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      gap: 10px;
+      width: 60px;
+      font-size: 0.80rem;
+    }
+
+    .navbar-social-link span {
+      margin-top: 6px;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    .navbar-social-link ion-icon {
+      font-size: 24px;
+      display: block;
+      margin: 0 auto;
+    }
+
+    .navbar-social-link:hover {
+      color: #0079CC;
+    }
+
+    /* MOBILE HEADER LAYOUT CHANGES */
+    .header-bottom-actions {
+      background: hsl(0, 0%, 100%);
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      display: flex;
+      justify-content: space-evenly;
+      padding-block: 15px 10px;
+      box-shadow: -2px 0 30px hsla(237, 71%, 52%, 0.2);
+      z-index: 3;
+      display: none;
+    }
+
+    .header-bottom-actions-btn ion-icon {
+      color: hsl(0, 0%, 10%);
+      font-size: 20px;
+      margin-inline: auto;
+      margin-bottom: 5px;
+      --ionicon-stroke-width: 40px;
+      transition: 0.25s ease;
+    }
+
+    .header-bottom-actions-btn:is(:hover, :focus) ion-icon {
+      color: #0079CC;
+    }
+
+    .header-bottom-actions-btn span {
+      color: hsl(200, 15%, 43%);
+      font-family: "Poppins", sans-serif;
+      font-size: 0.75rem;
+      font-weight: 500;
+    }
+
+    /* FIXED Mobile Menu Button - SIMPLE HOVER EFFECT */
+    .mobile-menu-btn {
+      display: block;
+      background: none;
+      border: none;
+      color: hsl(0, 0%, 10%);
+      cursor: pointer;
+      transition: 0.25s ease;
+      padding: 8px;
+      min-width: 40px;
+      min-height: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+    }
+
+    .mobile-menu-btn:hover {
+      color: #0079CC;
+      transform: scale(1.05);
+    }
+
+    /* SIMPLE HAMBURGER ICON - NO COMPLEX ANIMATION */
+    .hamburger {
+      width: 24px;
+      height: 18px;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .hamburger span {
+      display: block;
+      height: 2px;
+      width: 100%;
+      background: currentColor;
+      border-radius: 1px;
+      transition: 0.2s ease;
+    }
+
+    .mobile-menu-btn:hover .hamburger span {
+      background: #0079CC;
+    }
+
+    /* HEADER MEDIA QUERIES - FIXED */
+    @media (min-width: 600px) {
+      .site-header .container {
+        max-width: 550px;
+        margin-inline: auto;
+      }
+    }
+
+    @media (min-width: 768px) {
+      .site-header .container {
+        max-width: 720px;
+      }
+
+      .header-bottom-actions {
+        all: unset;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
+
+      .header-bottom .container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      .header-bottom-actions-btn ion-icon {
+        margin-bottom: 0;
+      }
+
+      .header-bottom-actions-btn span {
+        display: none;
+      }
+
+      .header-bottom-actions-btn {
+        background: hsl(0, 0%, 100%);
+        width: 50px;
+        height: 50px;
+        box-shadow: 0 16px 32px hsla(188, 63%, 7%, 0.1);
+      }
+
+      .mobile-menu-btn {
+        display: none;
+      }
+
+      .navbar-social {
+        display: none;
+      }
+
+      /* RESTORE ORIGINAL LOGO SIZE FOR TABLET+ */
+      .header-bottom .logo img {
+        width: 80px;
+      }
+    }
+
+    @media (min-width: 992px) {
+      .site-header .container {
+        max-width: 970px;
+      }
+    }
+
+    @media (min-width: 1200px) {
+      .site-header .container {
+        max-width: 1200px;
+      }
+
+      .header-bottom {
+        padding-block: 30px;
+      }
+
+      .header-bottom-actions-btn:last-child,
+      .navbar-top,
+      .overlay {
+        display: none;
+      }
+
+      .navbar,
+      .navbar.active {
+        all: unset;
+      }
+
+      .navbar-list {
+        display: flex;
+        align-items: center;
+        gap: 30px;
+      }
+
+      .navbar-link {
+        color: hsl(188, 63%, 7%);
+        font-size: 1.125rem;
+        text-transform: capitalize;
+      }
+
+      .mobile-menu-btn {
+        display: none !important;
+      }
+    }
+
+    @media (max-width: 1200px) {
+      .product-grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+
+    @media (max-width: 992px) {
+      .product-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .hero-title {
+        font-size: 40px;
+      }
+
+      .section-title {
+        font-size: 32px;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .product-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px;
+      }
+
+      .hero {
+        padding: 40px 0;
+      }
+
+      .product-section {
+        padding: 60px 0;
+      }
+
+      .hero-title {
+        font-size: 32px;
+      }
+
+      .hero-description {
+        font-size: 16px;
+      }
+
+      .section-title {
+        font-size: 28px;
+      }
+
+      .cta-title {
+        font-size: 28px;
+      }
+
+      .header-bottom .container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      .header-bottom .logo {
+        margin: 0;
+      }
+
+      .header-bottom .logo img {
+        margin: 0;
+      }
+    }
+
+    @media (max-width: 576px) {
+      .product-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-title {
+        font-size: 28px;
+      }
+
+      .section-title {
+        font-size: 26px;
+      }
+
+      .product-title {
+        font-size: 20px;
+      }
+
+      .product-description {
+        font-size: 13px;
+      }
+    }
+
+    
   </style>
 </head>
 
 <body>
-  <header class="header" data-header>
+  <header class="site-header">
     <div class="overlay" data-overlay></div>
 
     <div class="header-bottom">
       <div class="container">
-        <a href="#" class="logo">
-          <img src="./assets/images/logo.png" alt="kutchpolymer Logo">
+        <a href="../index.html" class="logo">
+          <img src="../assets/images/logo.png" alt="kutchpolymer Logo">
         </a>
+
+        <!-- Mobile Menu Button - ANIMATED HAMBURGER -->
+        <button class="mobile-menu-btn" data-nav-open-btn aria-label="Open Menu">
+          <div class="hamburger">
+            <span></span>
+            <span></span>
+            <span></span>
+          </div>
+        </button>
 
         <nav class="navbar" data-navbar>
           <div class="navbar-top">
-            <a href="#" class="logo">
-              <img src="./assets/images/logo.png" alt="kutchpolymer Logo">
+            <a href="../index.html" class="logo">
+              <img src="../assets/images/logo.png" alt="kutchpolymer Logo">
             </a>
+
             <button class="nav-close-btn" data-nav-close-btn aria-label="Close Menu">
               <ion-icon name="close-outline"></ion-icon>
             </button>
@@ -880,44 +1317,46 @@
           <div class="navbar-bottom">
             <ul class="navbar-list">
               <li>
-                <a href="/index.html" class="navbar-link" data-nav-link>Home</a>
+                <a href="../index.html" class="navbar-link" data-nav-link>Home</a>
               </li>
               <li>
-                <a href="About us.html" class="navbar-link" data-nav-link>About</a>
+                <a href="../About us.html" class="navbar-link" data-nav-link>About</a>
               </li>
               <li>
-                <a href="#blog" class="navbar-link" data-nav-link>Services</a>
+                <a href="../index.html#blog" class="navbar-link" data-nav-link>Services</a>
               </li>
               <li>
-                <a href="contact.html" class="navbar-link" data-nav-link>Contact</a>
+                <a href="../contact.html" class="navbar-link" data-nav-link>Contact</a>
               </li>
             </ul>
+          </div>
 
-            <!-- Social media icons at bottom of mobile navbar -->
-            <div class="navbar-social">
-              <button class="navbar-social-btn" aria-label="Facebook">
-                <a href="https://www.facebook.com/people/Kutch-Polymer/61558686630039/" target="_blank">
+          <!-- Mobile Social Icons -->
+          <div class="navbar-social">
+            <ul class="navbar-social-list">
+              <li>
+                <a href="https://www.facebook.com/people/Kutch-Polymer/61558686630039/" target="_blank"
+                  class="navbar-social-link">
                   <ion-icon name="logo-facebook"></ion-icon>
+                  <span>Facebook</span>
                 </a>
-                <span>Facebook</span>
-              </button>
-              <button class="navbar-social-btn" aria-label="Instagram">
-                <a href="https://www.instagram.com/kutch_polymers/" target="_blank">
+              </li>
+              <li>
+                <a href="https://www.instagram.com/kutch_polymers/" target="_blank" class="navbar-social-link">
                   <ion-icon name="logo-instagram"></ion-icon>
+                  <span>Instagram</span>
                 </a>
-                <span>Instagram</span>
-              </button>
-              <button class="navbar-social-btn" aria-label="Whatsapp">
-                <a href="https://wa.me/919820556353?text=Hey" target="_blank">
+              </li>
+              <li>
+                <a href="https://wa.me/919820556353?text=Hey" target="_blank" class="navbar-social-link">
                   <ion-icon name="logo-whatsapp"></ion-icon>
+                  <span>WhatsApp</span>
                 </a>
-                <span>Whatsapp</span>
-              </button>
-            </div>
+              </li>
+            </ul>
           </div>
         </nav>
 
-        <!-- Desktop social icons and menu button -->
         <div class="header-bottom-actions">
           <button class="header-bottom-actions-btn" aria-label="Facebook">
             <a href="https://www.facebook.com/people/Kutch-Polymer/61558686630039/" target="_blank">
@@ -925,32 +1364,30 @@
             </a>
             <span>Facebook</span>
           </button>
+
           <button class="header-bottom-actions-btn" aria-label="Instagram">
             <a href="https://www.instagram.com/kutch_polymers/" target="_blank">
               <ion-icon name="logo-instagram"></ion-icon>
             </a>
             <span>Instagram</span>
           </button>
-          <button class="header-bottom-actions-btn" aria-label="Whatsapp">
+
+          <button class="header-bottom-actions-btn" aria-label="Cart">
             <a href="https://wa.me/919820556353?text=Hey" target="_blank">
               <ion-icon name="logo-whatsapp"></ion-icon>
             </a>
             <span>Whatsapp</span>
           </button>
-          <button class="header-bottom-actions-btn menu-toggle-btn" data-nav-open-btn aria-label="Open Menu">
+
+          <button class="header-bottom-actions-btn" data-nav-open-btn aria-label="Open Menu">
             <ion-icon name="menu-outline"></ion-icon>
             <span>Menu</span>
           </button>
         </div>
-
-        <!-- Mobile menu button (separate from desktop actions) -->
-        <button class="mobile-menu-btn" data-nav-open-btn aria-label="Open Menu">
-          <ion-icon name="menu-outline"></ion-icon>
-          <span>Menu</span>
-        </button>
       </div>
     </div>
   </header>
+
 
 
 
@@ -1456,12 +1893,10 @@
 
   <!-- AOS JS -->
   <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
-  <script>
-    AOS.init({
-      duration: 800,
-      once: true
-    });
-  </script>
+
+  <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+  <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+  <script src="../assets/js/script.js"></script>
 </body>
 
 </html>
