@@ -275,7 +275,7 @@ button, a { transition: var(--transition); }
 
 .header {
   position: relative;
-  z-index: 2;
+  z-index: 10;
 }
 
 .header-top {
@@ -410,14 +410,14 @@ button, a { transition: var(--transition); }
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  min-height: 0; /* Fix for flex shrinking */
+  min-height: 0;
 }
 
 .navbar-list {
   display: flex;
   flex-direction: column;
   gap: 10px;
-  margin-bottom: 0; /* Remove auto margin */
+  margin-bottom: 0;
 }
 
 .navbar-link {
@@ -447,14 +447,13 @@ button, a { transition: var(--transition); }
   pointer-events: all;
 }
 
-/* Social icons inside navbar - positioned at bottom */
 .navbar-social {
   display: flex;
   justify-content: space-around;
   padding-top: 20px;
   border-top: 1px solid var(--cultured-1);
-  margin-top: auto; /* This pushes it to bottom */
-  flex-shrink: 0; /* Prevent shrinking */
+  margin-top: auto;
+  flex-shrink: 0;
 }
 
 .navbar-social-btn {
@@ -490,12 +489,11 @@ button, a { transition: var(--transition); }
   text-decoration: none;
 }
 
-/* Desktop styles */
 .header-bottom-actions {
   display: flex;
   align-items: center;
   gap: 20px;
-  flex-shrink: 0; /* Prevent container from shrinking */
+  flex-shrink: 0;
 }
 
 .header-bottom-actions-btn {
@@ -508,20 +506,20 @@ button, a { transition: var(--transition); }
   border: none;
   cursor: pointer;
   padding: 5px;
-  min-width: 50px; /* Fixed minimum width */
-  max-width: 50px; /* Fixed maximum width */
-  width: 50px; /* Fixed width to prevent stretching */
-  flex-shrink: 0; /* Prevent button shrinking */
-  flex-grow: 0; /* Prevent button growing */
+  min-width: 50px;
+  max-width: 50px;
+  width: 50px;
+  flex-shrink: 0;
+  flex-grow: 0;
 }
 
 .header-bottom-actions-btn ion-icon {
   color: hsl(0, 0%, 10%);
   font-size: 20px;
-  margin-bottom: 0; /* Remove margin since we have gap */
+  margin-bottom: 0;
   --ionicon-stroke-width: 40px;
   transition: var(--transition);
-  flex-shrink: 0; /* Prevent icon stretching */
+  flex-shrink: 0;
 }
 
 .header-bottom-actions-btn:is(:hover, :focus) ion-icon { 
@@ -540,24 +538,21 @@ button, a { transition: var(--transition); }
   text-decoration: none;
 }
 
-/* Mobile menu button - hidden by default */
 .mobile-menu-btn {
   display: none;
-  flex-direction: column;
-  align-items: center;
-  gap: 5px;
   background: none;
   border: none;
   cursor: pointer;
   position: absolute;
-  right: 15px; /* Moved closer to edge - was 0 */
+  right: 15px;
   top: 50%;
   transform: translateY(-50%);
+  padding: 8px;
 }
 
 .mobile-menu-btn ion-icon {
   color: hsl(0, 0%, 10%);
-  font-size: 20px;
+  font-size: 24px;
   --ionicon-stroke-width: 40px;
   transition: var(--transition);
 }
@@ -566,26 +561,35 @@ button, a { transition: var(--transition); }
   color: #0079CC; 
 }
 
-.mobile-menu-btn span {
-  color: var(--cadet);
-  font-family: var(--ff-poppins);
-  font-size: var(--fs-7);
-  font-weight: var(--fw-500);
-}
-
 /* Mobile styles */
 @media (max-width: 768px) {
   
+  /* Reduce header height to match contact page */
+  .header-bottom {
+    padding-block: 15px;
+  }
+  
+  /* Make logo smaller on mobile - only top navbar logo */
+  .header-bottom .logo img {
+    width: 73px;
+    height: auto;
+  }
+  
+  /* Keep original logo size inside opened mobile menu */
+  .navbar-top .logo img {
+    width: 200px;
+  }
+  
   /* Reduce navbar height and adjust padding */
   .navbar {
-    height: 100vh; /* Full height to prevent empty space */
-    padding: 15px 20px 20px 20px; /* Consistent padding */
+    height: 100vh;
+    padding: 65px 20px 20px 20px;
   }
   
   .navbar-top {
-    margin-bottom: 15px;
-    padding-bottom: 15px;
-    flex-shrink: 0; /* Prevent shrinking */
+    margin-bottom: 35px;
+    padding-bottom: 35px;
+    flex-shrink: 0;
   }
   
   /* Ensure proper flex layout */
@@ -614,7 +618,7 @@ button, a { transition: var(--transition); }
     display: none !important;
   }
   
-  /* Show mobile menu button */
+  /* Show mobile menu button - icon only, no text */
   .mobile-menu-btn {
     display: flex !important;
   }
@@ -667,6 +671,7 @@ button, a { transition: var(--transition); }
     display: none !important;
   }
 }
+
 
 
 /*-----------------------------------*\
